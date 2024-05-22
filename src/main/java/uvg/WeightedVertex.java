@@ -3,9 +3,9 @@ package uvg;
 public class WeightedVertex {
     private String firstNode;
     private String secondNode;
-    private int weight;
+    private float weight;
     
-    public WeightedVertex(String firstNode, String secondNode, int weight){
+    public WeightedVertex(String firstNode, String secondNode, float weight){
         this.firstNode = firstNode;
         this.secondNode = secondNode;
         this.weight = weight;
@@ -19,7 +19,7 @@ public class WeightedVertex {
         return this.secondNode;
     }
 
-    public int getWeight(){
+    public float getWeight(){
         return this.weight;
     }
 
@@ -27,4 +27,5 @@ public class WeightedVertex {
         return firstNode.equals(other.getFirstNode()) && secondNode.equals(other.getSecondNode());
     }
 
+    
 }

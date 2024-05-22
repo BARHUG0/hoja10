@@ -11,9 +11,9 @@ public class Tokenizer {
      * @param str
      * @return ArrayList<Association<String, String>>
      */
-    public static ArrayList<WeightedVertex> getVertexs(String str){
+    public static ArrayList<WeightedVertex> getVertexsFromString(String str){
 
-        String regex = "([^ ]*) ([^ ]*) (\\d*)";
+        String regex = "([^ ]+) ([^ ]+) (\\d+)";
         Pattern pattern = Pattern.compile(regex); 
         Matcher matcher = pattern.matcher(str);
         ArrayList<WeightedVertex> resultArr = new ArrayList<WeightedVertex>();
@@ -25,9 +25,9 @@ public class Tokenizer {
         return resultArr;
     }
 
-    public String[] getNodes(String str){
+    public String[] getNodesFromString(String str){
 
-        String regex = "([^ \\d]*)";
+        String regex = "([^ \\d]+)";
         Pattern pattern = Pattern.compile(regex); 
         Matcher matcher = pattern.matcher(str);
         ArrayList<String> arr = new ArrayList<String>();

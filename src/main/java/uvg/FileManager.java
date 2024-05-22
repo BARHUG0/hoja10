@@ -21,7 +21,7 @@ public class FileManager {
         String line;
 
         while (( line = reader.readLine()) != null){
-            result = line + "|";
+            result = result + line ;
         } 
 
         reader.close();
