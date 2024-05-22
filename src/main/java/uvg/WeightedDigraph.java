@@ -38,10 +38,21 @@ public class WeightedDigraph {
         return this.floydMatrix;
     }
 
+    public float getFloydPath(String startingNode, String endNode){
+        int i = getNodeIndex(startingNode);
+        int j = getNodeIndex(endNode);
+        return floydMatrix[i][j];
+    }
+
     private void generateDigraph(ArrayList<WeightedVertex> wArr){
         digraph = new TreeMap<String, SortedMap<String, Float>>();
         for(WeightedVertex w : wArr){
+            if(!digraph.containsKey(w.getSecondNode())){
+                TreeMap<String, Float> tMap = new TreeMap<String,Float>();
+                digraph.put(w.getSecondNode(), tMap);
+            }
             if(digraph.containsKey(w.getFirstNode())){
+
                 digraph.get(w.getFirstNode()).put(w.getSecondNode(), w.getWeight());
             }else{
                 TreeMap<String, Float> tMap = new TreeMap<String,Float>();
@@ -67,7 +78,10 @@ public class WeightedDigraph {
         int i = 0;
         for(String node : nodes){
             for(String neighbor : digraph.get(node).keySet()){
-                weigthMatrix[i][getNodeIndex(neighbor)] = digraph.get(node).get(neighbor);
+                if(getNodeIndex(neighbor) != -1){
+                    weigthMatrix[i][getNodeIndex(neighbor)] = digraph.get(node).get(neighbor);
+                }
+                
             }
             i++;
         }
